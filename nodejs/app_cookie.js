@@ -32,7 +32,7 @@ app.get('/cart/:id', function(req,res){
     cart[id] = parseInt(cart[id]) + 1;
     //쿠키에 의해서 전달된 값은 문자이므로 int로 변환하여 계산해야한다
 
-    res.cookie('cart',cart, signed:true);
+    res.cookie('cart',cart, {signed:true});
     res.redirect('/cart');
 });
 
