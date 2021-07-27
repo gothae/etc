@@ -1,6 +1,7 @@
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+
 var app = express();
 
 //세션 사용하도록
