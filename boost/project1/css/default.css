@@ -2,15 +2,15 @@ body{
     text-align: center;
     background-color: rgb(51, 211, 158);
 }
-.navigation > .btn_list{
-    margin: 5px 10px 5px 10px;
+#navigation > .btn_list{
+    padding: 20px;
     background-color: white;
 }
-.content{
-    margin: 5px 10px 5px 10px;
+#content{
+    padding: 20px;
     background-color: white;
 }
-.footer{
-    margin: 5px 10px 5px 10px;
+#footer{
+    padding: 20px;
     background-color: white;
 }

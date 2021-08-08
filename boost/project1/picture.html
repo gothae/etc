@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/navigation.css">
 
     <script src="app.js"></script>
 </head>
 <body>
-    <h1>pic</h1>
+    <div id="navigation">
+        <div class="btn_list">
+            <button id="btn_home" onclick="js:navigator()">홈</button>
+            <button id="btn_introduce" onclick="js:navigator()">자기소개</button>
+            <button id="btn_pic" onclick="js:navigator()">내사진</button>
+            <button id="btn_time" onclick="js:navigator()">몇시에요</button>
+        </div> 
+    </div>
+
+    <div id="content">
+        <h1>content</h1>
+        <p>hi</p>
+        <img style="width: 50%; height: 50%;" src="./img/map.png" alt="map">
+    </div>
     
+    <div id="footer">
+        <h2>footer</h2>
+    </div>
 
 </body>
 </html>
