@@ -1,8 +1,10 @@
 import './App.css';
 import React,{ Component } from 'react';
 import TOC from "./components/TOC.js";
-import Content from './components/Content.js';
+import ReadContent from './components/ReadContent.js';
+import CreateContent from './components/CreateContent';
 import Subject from './components/Subject.js';
+import Control from './components/Control';
 import Comment from './components/Comment';
 
 const comment = {
@@ -18,6 +20,7 @@ class App extends Component{
   // 초기화를 담당한다.
   constructor(props){
     super(props);
+    this.max_content_id = 3;
     this.state = {
       mode : "read",
       selected_content_id : 3,
@@ -32,10 +35,12 @@ class App extends Component{
   }
   // props / state 값이 바뀌면 해당되는 component의 render()호출
   render(){
-    var _title, _desc = null;
+    var _title, _desc, _article = null;
     if(this.state.mode === "welcome"){
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+
     }else if(this.state.mode === "read"){
       var i = 0;
       while(i< this.state.contents.length){
@@ -47,6 +52,21 @@ class App extends Component{
         }
         i += 1;
       }
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+    }else if(this.state.mode=== "create"){
+      _article = <CreateContent
+        onSubmit = {function(_title,_desc){
+          this.max_content_id += 1;
+          // push말고 concate을 통해서 하면 원본을 바꾸지 않는다
+          var _contents = this.state.contents.concat(
+            {id:this.max_content_id, title:_title, desc:_desc}
+          );
+          this.setState({
+            contents : _contents
+          });
+        }.bind(this)}
+      >
+      </CreateContent>
     }
     return (
       <div className="App">
@@ -58,6 +78,7 @@ class App extends Component{
           }.bind(this)}
           >
         </Subject>
+        
         <TOC onChangePage = {function(id){
           this.setState({
             mode:"read",
@@ -65,7 +86,18 @@ class App extends Component{
         }.bind(this)}
          data={this.state.contents}>
         </TOC>
-        <Content title={_title} desc={_desc}></Content>
+
+        <Control
+          onChangeMode = {function(_mode){
+            this.setState({
+              mode:_mode
+            })
+          }.bind(this)}
+        >
+        </Control>
+
+        {_article}
+        
         <Comment author = {comment.author}
         text = {comment.text}
         date = {comment.date}>  
