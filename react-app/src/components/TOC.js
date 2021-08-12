@@ -1,5 +1,14 @@
 import React, {Component} from "react";
 class TOC extends Component{
+  // render가 실행될지 아닐지를 결정하는 것은 성능에 영향을 끼친다
+  // updating의 라이프 사이클 shouldComponentUpdate 후에
+  // componentWillUpdate -> render
+    shouldComponentUpdate(newProps, newState){
+      if(this.props.data === newProps.data){
+        return false;
+      }
+      return true;
+    }
     render(){
       var lists = [];
       var data = this.props.data;
