@@ -31,6 +31,7 @@ class App extends Component {
         <h1>찌섯피자</h1>
         
         <Menu
+          pizza = {this.state.pizza}
           orderTotal = {this.state.orderTotal}
           updateOrder = {this.updateOrder}
         >
