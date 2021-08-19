@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-export default function SuggestedProfile({userDocId, username, profileId, userId}){
+import { updateLoggedInUserFollowing, updateFollowedUserFollowers} from '../../services/firebase';
+export default function SuggestedProfile({ profileDocId, username, profileId, userId, loggedInUserdocId}){
     const [followed, setFollowed] = useState(false);
 
-    // 팔로우를 누른 유저의 following array update
-    // 눌려진 유저의 follower array update 해야한다
-    async function handelFollowUser(){
+    async function handleFollowUser(){
         setFollowed(true);
+
+    // 팔로우를 누른 유저의 following array update
+        await updateLoggedInUserFollowing(loggedInUserdocId, profileId, false);
+    // 눌려진 유저의 follower array update 해야한다
+        await updateFollowedUserFollowers(profileDocId, userId, false);
     }
     return !followed ? (
         <div className="flex flex-row items-center align-items justify-between">
@@ -25,7 +29,7 @@ export default function SuggestedProfile({userDocId, username, profileId, userId
             <button
                 className="text-xs font-bold text-blue-medium"
                 type="button"
-                onClick={()=> console.log('Follow this ',{username})}
+                onClick={handleFollowUser}
             >
             Follow
             </button>
@@ -35,8 +39,9 @@ export default function SuggestedProfile({userDocId, username, profileId, userId
 }
 
 SuggestedProfile.propTypes={
-    userDocId: PropTypes.string.isRequired,
+    profileDocId: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     profileId: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired,
+    loggedInUserdocId : PropTypes.string.isRequired
 }
