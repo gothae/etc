@@ -8,7 +8,7 @@ export default function useUser() {
 
     useEffect(() => {
         async function getUserObjByUserId() {
-            const reponse = getUserByUserId(user.uid);
+            const [reponse] = await getUserByUserId(user.uid);
             // const [response] 로 사용하여야 하는가 ? 4:02:30
             setActiveUser(reponse);
         }

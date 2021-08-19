@@ -1,19 +1,21 @@
 import useUser from "../../hooks/use-user";
 import User from './user';
 import Suggestions from './suggestions';
+import React, { memo } from "react";
 
 export default function Sidebar(){
-    const { 
-        user : {fullName, username, userId}
+    const {  
+        user : {fullName, username, userId, following }
     } = useUser();
 
-    console.log('index,user',username);
-    // user가 undefined라서 User componenet에서 Skeleton만뜸
+    console.log('following',following);
     
     return (
         <div className="p-4">
             <User username={username} fullName={fullName}/>
-            <Suggestions userId={userId}/>
+            <Suggestions userId={userId} following={following}/>
         </div>
     );
-}
+};
+
+Sidebar.whyDidYouRender = true;
