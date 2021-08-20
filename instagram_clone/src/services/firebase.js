@@ -59,10 +59,10 @@ export async function getPhotos(userId, following){
     const result = await firebase
     .firestore()
     .collection('photos')
-    .where('uesrId', 'in', following)
+    .where('userId', 'in', following)
     .get();
 
-    const userFollowedPhotos = result.doc.map((photo)=>({
+    const userFollowedPhotos = result.docs.map((photo)=>({
         ...photo.data(),
         docId : photo.id
     }));
@@ -79,5 +79,5 @@ export async function getPhotos(userId, following){
             return {username, ...photo, userLikedPhoto};
         })
     )
-    retrun photosWithUserDetails;
+    return photosWithUserDetails;
 }
