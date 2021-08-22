@@ -125,4 +125,17 @@ export async function isUserFollowingProfile(loggedInUserUsername, profileUserId
         docId : item.id
     }));
 
+    return response.userId;
+}
+
+export async function toggleFollow(
+    isFollowingProfile, 
+    activeUserDocId, 
+    profileDocId, 
+    profileUserId, 
+    followingUserId ){
+    // 로그인된 사람 docId , 프로필사람의 userId ,  following중인지
+    await updateLoggedInUserFollowing(activeUserDocId, profileUserId, isFollowingProfile);
+    // 로그인된사람 userid, 프로필 docId , following 중인지
+    await updateFollowedUserFollowers(profileDocId, followingUserId, isFollowingProfile);
 }
