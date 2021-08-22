@@ -96,6 +96,7 @@ export async function getPhotos(userId, following){
     return photosWithUserDetails;
 }
 
+// profile용 
 export async function getUserPhotosByUsername(username){
     const [user] = await getUserByUsername(username);
     const result = await firebase
@@ -108,5 +109,20 @@ export async function getUserPhotosByUsername(username){
             ...item.data(),
             docId : item.id
         }));
+
+}
+
+export async function isUserFollowingProfile(loggedInUserUsername, profileUserId){
+    const result = await firebase
+        .firestore()
+        .collection('users')
+        .where('username','==',loggedInUserUsername)
+        .where('following','array-contains',profileUserId)
+        .get();
+    
+    const [response = {}] = result.docs.map((item) => ({
+        ...item.data(),
+        docId : item.id
+    }));
 
 }
