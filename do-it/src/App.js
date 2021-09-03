@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import ChildProperty from './03/ChildProperty';
-import StateExample from './03/StateExample';
-import TodaysPlan from './03/TodaysPlan';
+import Counter from './03/Counter';
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      count : 1
+    };
+  }
+  increaseCount(){
+    this.setState( ({count}) => ({count : count + 1}))
+  }
   render() {
     return (
-      <StateExample/>
+      <Counter count={0}/>
     );
   }
 }
