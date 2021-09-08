@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16.3": "^1.7.4",
@@ -27,7 +27,6 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -50,22 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "@storybook/addon-actions": "^6.3.8",
-    "@storybook/addons": "^6.3.8",
-    "@storybook/react": "^6.3.8",
-    "aphrodite": "^2.4.0",
-    "babel-loader": "^8.2.2",
-    "json-server": "^0.16.3",
-    "node-sass": "^6.0.1",
-    "react-with-styles-interface-aphrodite": "^6.0.1",
-    "redux-devtools-extension": "^2.13.9",
-    "sass-loader": "^12.1.0",
-    "storybook-addon-jsx": "^7.3.13"
-  },
-  "main": "index.js",
-  "license": "MIT"
+  }
 }
