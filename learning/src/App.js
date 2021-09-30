@@ -1,14 +1,21 @@
+import React, { Component } from 'react';
 import AddColorForm from './06/AddColorForm';
 
-function App() {
-  const logColor = (title, color) => (
-    console.log(`새로운 색 : ${title} | ${color}`)
-  )
-  return (
-    <div className="App">
-      <AddColorForm onNewColor = {logColor}/>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      colors : []
+    }
+  }
+  render() {
+    const { colors } = this.state;
+    return (
+      <div className="App">
+        <AddColorForm/>
+      </div>
+    );
+  }
 }
 
 export default App;
