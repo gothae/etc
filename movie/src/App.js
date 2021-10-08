@@ -10,9 +10,9 @@ function App(){
   return (
     <HashRouter>
       <Navigation/>
-      <Route path="/home" exact={true} component={Home}/>
+      <Route path="/" exact={true} component={Home}/>
       <Route path="/about" component={About}/>
-      <Route path="/movie-detail" component={Detail}a/>
+      <Route path="/movie-detail" component={Detail}/>
     </HashRouter>
   );
 }
